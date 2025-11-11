@@ -20,8 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <Header />
-      <body className={`${notoSansJP.className} antialiased`}>{children}</body>
+      <body className={`${notoSansJP.className} antialiased`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
