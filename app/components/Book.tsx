@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Book as BookType } from "@/app/types/types";
+
+interface BookProps {
+  book: BookType;
+}
 
 // eslint-disable-next-line react/display-name
-const Book = ({ book }: any) => {
+const Book = ({ book }: BookProps) => {
   return (
     <>
       {/* アニメーションスタイル */}
