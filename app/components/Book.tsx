@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Book as BookType } from "@/app/types/types";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface BookProps {
   book: BookType;
@@ -20,21 +20,21 @@ const Book = ({ book }: BookProps) => {
 
   const handleParchaseClick = () => {
     setShowModal(true);
-  }
+  };
 
   const handlePachaseConfirm = () => {
     if (!user) {
       setShowModal(false);
       // ログインページへリダイレクト
-      router.push('/logout');
+      router.push("/login");
     } else {
       // stripeで決済する
     }
-  }
+  };
 
   const handleCancel = () => {
     setShowModal(false);
-  }
+  };
 
   return (
     <>
@@ -56,7 +56,10 @@ const Book = ({ book }: BookProps) => {
       `}</style>
 
       <div className="flex flex-col items-center m-4">
-        <a onClick={handleParchaseClick} className="cursor-pointer shadow-2xl duration-300 hover:translate-y-1 hover:shadow-none">
+        <a
+          onClick={handleParchaseClick}
+          className="cursor-pointer shadow-2xl duration-300 hover:translate-y-1 hover:shadow-none"
+        >
           <Image
             priority
             src={book.thumbnail.url}
@@ -76,10 +79,16 @@ const Book = ({ book }: BookProps) => {
           <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-900/50 flex justify-center items-center z-50">
             <div className="bg-white p-8 rounded-lg modal-content">
               <h3 className="text-xl mb-4">本を購入しますか？</h3>
-              <button onClick={handlePachaseConfirm} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4">
+              <button
+                onClick={handlePachaseConfirm}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+              >
                 購入する
               </button>
-              <button onClick={handleCancel} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+              <button
+                onClick={handleCancel}
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+              >
                 キャンセル
               </button>
             </div>
