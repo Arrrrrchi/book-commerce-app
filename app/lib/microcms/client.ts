@@ -1,4 +1,5 @@
 import { createClient } from 'microcms-js-sdk';
+import { Book as BookType } from "@/app/types/types";
 
 export const client = createClient({
   serviceDomain: process.env.NEXT_PUBLIC_SERVICE_DOMAIN!, 
@@ -6,7 +7,7 @@ export const client = createClient({
 });
 
 export const getAllBooks = async () => {
-  const allBooks = await client.getList({
+  const allBooks = await client.getList<BookType>({
     endpoint: "bookmanage",
   });
 

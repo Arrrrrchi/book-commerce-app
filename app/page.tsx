@@ -1,5 +1,5 @@
 import Book from "./components/Book";
-import { getAllBooks } from "@/lib/microcms/client";
+import { getAllBooks } from "@/app/lib/microcms/client";
 
 // 疑似データ
 // const books = [
